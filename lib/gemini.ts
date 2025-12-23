@@ -11,7 +11,7 @@ export async function analyzeCallTranscript(transcript: string) {
     }
 
     // Use gemini-2.0-flash-lite - lightweight and fast model
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
 
     const prompt = `You are an expert Sales Manager. Analyze this sales call transcript and provide your assessment.
 
