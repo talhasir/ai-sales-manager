@@ -87,35 +87,35 @@ export function CallDetailClient({ call }: CallDetailClientProps) {
   }, [state.status, state.data, call.id]);
 
   return (
-    <div className="space-y-6" style={{ opacity: 1 }}>
+    <div className="space-y-4 sm:space-y-6" style={{ opacity: 1 }}>
       <div style={{ opacity: 1 }}>
         <Link 
           href="/dashboard/calls"
-          className="inline-flex items-center text-gray-400 hover:text-white mb-4 transition-colors"
+          className="inline-flex items-center text-sm sm:text-base text-gray-400 hover:text-white mb-3 sm:mb-4 transition-colors"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to calls
         </Link>
-        <h1 className="text-3xl font-bold text-white">Call Analysis</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-white">Call Analysis</h1>
       </div>
 
       {/* Call Header */}
       <Card className="bg-zinc-900 border-zinc-800" style={{ opacity: 1 }}>
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-white">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+            <div className="min-w-0 flex-1">
+              <CardTitle className="text-base sm:text-xl text-white truncate">
                 {call.repName} → {call.prospectName}
               </CardTitle>
-              <p className="text-gray-400 mt-1">{call.prospectCompany}</p>
+              <p className="text-sm sm:text-base text-gray-400 mt-1 truncate">{call.prospectCompany}</p>
             </div>
-            <Badge className="bg-zinc-800 text-gray-300">
-              {new Date(call.date).toLocaleDateString()}
+            <Badge className="bg-zinc-800 text-gray-300 text-xs sm:text-sm shrink-0 self-start sm:self-center">
+              {new Date(call.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
             </Badge>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-3 gap-4 text-sm">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 text-xs sm:text-sm">
             <div>
               <p className="text-gray-400">Duration</p>
               <p className="font-medium text-white">{call.duration}</p>
@@ -135,11 +135,11 @@ export function CallDetailClient({ call }: CallDetailClientProps) {
       </Card>
 
       {/* Analysis Section */}
-      <Tabs defaultValue="analysis" className="space-y-6">
-        <TabsList className="bg-zinc-900 border border-zinc-800">
-          <TabsTrigger value="analysis">AI Analysis</TabsTrigger>
-          <TabsTrigger value="transcript">Transcript</TabsTrigger>
-          <TabsTrigger value="upload">Upload New</TabsTrigger>
+      <Tabs defaultValue="analysis" className="space-y-4 sm:space-y-6">
+        <TabsList className="bg-zinc-900 border border-zinc-800 w-full sm:w-auto grid grid-cols-3 sm:inline-grid">
+          <TabsTrigger value="analysis" className="text-xs sm:text-sm">AI Analysis</TabsTrigger>
+          <TabsTrigger value="transcript" className="text-xs sm:text-sm">Transcript</TabsTrigger>
+          <TabsTrigger value="upload" className="text-xs sm:text-sm">Upload New</TabsTrigger>
         </TabsList>
 
         {/* Analysis Tab */}
@@ -196,8 +196,8 @@ export function CallDetailClient({ call }: CallDetailClientProps) {
             <>
               {/* Score Progress Ring */}
               <Card className="bg-zinc-900 border-zinc-800" style={{ opacity: 1 }}>
-                <CardContent className="pt-6 flex flex-col items-center justify-center">
-                  <div className="relative w-48 h-48">
+                <CardContent className="pt-6 pb-6 flex flex-col items-center justify-center">
+                  <div className="relative w-32 h-32 sm:w-48 sm:h-48">
                     <svg className="w-full h-full" viewBox="0 0 192 192">
                       {/* Background circle */}
                       <circle
@@ -228,11 +228,11 @@ export function CallDetailClient({ call }: CallDetailClientProps) {
                       />
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-5xl font-bold text-white">{analysis.score}</span>
-                      <span className="text-gray-400 text-sm">out of 100</span>
+                      <span className="text-3xl sm:text-5xl font-bold text-white">{analysis.score}</span>
+                      <span className="text-gray-400 text-xs sm:text-sm">out of 100</span>
                     </div>
                   </div>
-                  <p className="mt-4 text-lg font-medium text-white">
+                  <p className="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-white text-center">
                     {analysis.score >= 85 ? "Excellent Performance" :
                      analysis.score >= 70 ? "Good Performance" : "Needs Improvement"}
                   </p>

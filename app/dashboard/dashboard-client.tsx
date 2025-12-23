@@ -76,16 +76,16 @@ export function DashboardClient({ stats, recentCalls }: DashboardClientProps) {
       initial="initial"
       animate="animate"
       variants={staggerContainer}
-      className="space-y-6"
+      className="space-y-4 sm:space-y-6"
     >
       <motion.div variants={fadeInUp}>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-gray-400 mt-1">Welcome back! Here's your sales performance overview.</p>
+        <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
+        <p className="text-sm sm:text-base text-gray-400 mt-1">Welcome back! Here's your sales performance overview.</p>
       </motion.div>
 
       {/* KPI Cards */}
       <motion.div 
-        className="grid gap-4 md:grid-cols-2 lg:grid-cols-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
         variants={staggerContainer}
       >
         {kpis.map((kpi) => (
@@ -114,33 +114,34 @@ export function DashboardClient({ stats, recentCalls }: DashboardClientProps) {
             <CardTitle>Recent Calls</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {recentCalls.map((call) => (
                 <Link 
                   key={call.id} 
                   href={`/dashboard/calls/${call.id}`}
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-zinc-800 transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 rounded-lg hover:bg-zinc-800 transition-colors gap-2 sm:gap-4"
                 >
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3">
-                      <div>
-                        <p className="font-medium">{call.repName}</p>
-                        <p className="text-sm text-gray-400">
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium truncate">{call.repName}</p>
+                        <p className="text-xs sm:text-sm text-gray-400 truncate">
                           {call.prospectName} · {call.prospectCompany}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
-                      <p className="text-sm text-gray-400">
+                  <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4">
+                    <div className="text-left sm:text-right">
+                      <p className="text-xs sm:text-sm text-gray-400">
                         {new Date(call.date).toLocaleDateString()}
                       </p>
-                      <p className="text-sm text-gray-500">{call.duration}</p>
+                      <p className="text-xs sm:text-sm text-gray-500">{call.duration}</p>
                     </div>
                     {call.analysis && (
                       <Badge 
                         className={cn(
+                          "shrink-0",
                           call.analysis.score >= 85 
                             ? "bg-success/20 text-success hover:bg-success/30" 
                             : call.analysis.score >= 70
@@ -172,16 +173,16 @@ export function DashboardClient({ stats, recentCalls }: DashboardClientProps) {
             <CardTitle>Team Performance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {stats.repPerformance.map((rep, index) => (
-                <div key={rep.name} className="flex items-center gap-4">
-                  <div className="w-8 text-center text-gray-400 font-medium">
+                <div key={rep.name} className="flex items-center gap-2 sm:gap-4">
+                  <div className="w-6 sm:w-8 text-center text-gray-400 font-medium text-sm sm:text-base shrink-0">
                     #{index + 1}
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-medium">{rep.name}</span>
-                      <span className="text-sm text-gray-400">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-1">
+                      <span className="font-medium text-sm sm:text-base truncate">{rep.name}</span>
+                      <span className="text-xs sm:text-sm text-gray-400 shrink-0">
                         {rep.callCount} calls · Avg {rep.avgScore}
                       </span>
                     </div>

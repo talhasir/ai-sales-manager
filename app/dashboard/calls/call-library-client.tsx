@@ -32,19 +32,19 @@ export function CallLibraryClient({ calls }: { calls: SalesCall[] }) {
     <motion.div
       initial="initial"
       animate="animate"
-      className="space-y-6"
+      className="space-y-4 sm:space-y-6"
     >
       <motion.div variants={fadeInUp}>
-        <h1 className="text-3xl font-bold">Call Library</h1>
-        <p className="text-gray-400 mt-1">Browse and analyze all sales calls.</p>
+        <h1 className="text-2xl sm:text-3xl font-bold">Call Library</h1>
+        <p className="text-sm sm:text-base text-gray-400 mt-1">Browse and analyze all sales calls.</p>
       </motion.div>
 
       <motion.div variants={fadeInUp}>
         <Card className="bg-zinc-900 border-zinc-800">
           <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle>All Calls ({filteredCalls.length})</CardTitle>
-              <div className="relative w-64">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+              <CardTitle className="text-lg sm:text-xl">All Calls ({filteredCalls.length})</CardTitle>
+              <div className="relative w-full sm:w-64">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
                   type="text"
@@ -62,16 +62,57 @@ export function CallLibraryClient({ calls }: { calls: SalesCall[] }) {
                 <Link
                   key={call.id}
                   href={`/dashboard/calls/${call.id}`}
-                  className="flex items-center justify-between p-4 rounded-lg hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-700"
+                  className="block p-3 sm:p-4 rounded-lg hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-700"
                 >
-                  <div className="flex-1 grid grid-cols-4 gap-4 items-center">
-                    <div>
-                      <p className="font-medium">{call.repName}</p>
+                  {/* Mobile Layout */}
+                  <div className="flex flex-col gap-3 sm:hidden">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium truncate">{call.repName}</p>
+                        <p className="text-xs text-gray-400">Sales Rep</p>
+                      </div>
+                      {call.analysis ? (
+                        <Badge 
+                          className={cn(
+                            "shrink-0 text-sm px-2 py-0.5",
+                            call.analysis.score >= 85 
+                              ? "bg-success/20 text-success hover:bg-success/30" 
+                              : call.analysis.score >= 70
+                              ? "bg-blue-500/20 text-blue-400 hover:bg-blue-500/30"
+                              : "bg-warning/20 text-warning hover:bg-warning/30"
+                          )}
+                        >
+                          {call.analysis.score}
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline" className="text-gray-400 text-xs shrink-0">
+                          Not analyzed
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-sm">
+                      <div>
+                        <p className="font-medium truncate">{call.prospectName}</p>
+                        <p className="text-xs text-gray-400 truncate">{call.prospectCompany}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-medium text-sm">
+                          {new Date(call.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        </p>
+                        <p className="text-xs text-gray-400">{call.duration}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop Layout */}
+                  <div className="hidden sm:grid sm:grid-cols-4 gap-4 items-center">
+                    <div className="min-w-0">
+                      <p className="font-medium truncate">{call.repName}</p>
                       <p className="text-sm text-gray-400">Sales Rep</p>
                     </div>
-                    <div>
-                      <p className="font-medium">{call.prospectName}</p>
-                      <p className="text-sm text-gray-400">{call.prospectCompany}</p>
+                    <div className="min-w-0">
+                      <p className="font-medium truncate">{call.prospectName}</p>
+                      <p className="text-sm text-gray-400 truncate">{call.prospectCompany}</p>
                     </div>
                     <div>
                       <p className="font-medium">
