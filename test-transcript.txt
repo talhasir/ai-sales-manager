@@ -1,0 +1,47 @@
+Rep: Hi, this is Sarah from SalesCoach AI. How are you today?
+
+Prospect: I'm good, Sarah. Thanks for calling. What's this about?
+
+Rep: I noticed you recently downloaded our whitepaper on improving sales team performance. What caught your interest about that topic?
+
+Prospect: Yes, we're actually struggling with coaching our new sales reps. We hired 10 people last quarter and our managers are overwhelmed trying to provide individual feedback on every call.
+
+Rep: That's a common challenge I hear from many sales leaders. How are you currently handling call reviews and coaching?
+
+Prospect: Right now, managers are supposed to listen to 5 calls per week per rep and provide written feedback. But honestly, they're lucky if they get through 2 or 3. The quality is inconsistent.
+
+Rep: I can imagine that's frustrating, especially when you're investing in new talent. What impact is this having on your team's performance?
+
+Prospect: Our ramp time is way too long - almost 6 months before new reps hit quota. And we're seeing turnover because people feel they're not getting enough support.
+
+Rep: That's definitely concerning. Six months is above industry average for most B2B sales roles. If I could show you a way to give every rep detailed, actionable feedback on every single call without adding to your managers' workload, would that be interesting?
+
+Prospect: Absolutely. How does it work?
+
+Rep: Our AI Sales Manager analyzes call transcripts automatically and provides a coaching score, a summary of what went well, and specific actionable coaching notes. Your managers get a dashboard showing which reps need help with what skills, so they can focus their time where it matters most.
+
+Prospect: Interesting. And this is all automated?
+
+Rep: The analysis is automated, but the coaching recommendations are designed to be highly specific and actionable - not generic. Managers can also add their own notes and track improvement over time.
+
+Prospect: What about the cost?
+
+Rep: We have a few different packages depending on team size and features. For a team of 10 reps, our standard package runs about $500 per month. Most clients see ROI within the first quarter through faster ramp time and better retention.
+
+Prospect: That's reasonable. Can we try it out first?
+
+Rep: Absolutely! I can set up a 30-day trial where you can upload historical call transcripts and see the analysis. No credit card required. Would you be available for a quick 20-minute demo next Tuesday?
+
+Prospect: Tuesday works. Let's do 2 PM.
+
+Rep: Perfect! I'll send you a calendar invite with a Zoom link. Is your email still michael.roberts@techflow.com?
+
+Prospect: Yes, that's correct.
+
+Rep: Great! I'll also include a link to upload a few sample transcripts beforehand so we can review real feedback from your team during the demo. Sound good?
+
+Prospect: Sounds perfect. Looking forward to it.
+
+Rep: Excellent! Talk to you Tuesday at 2 PM. Have a great rest of your day, Michael.
+
+Prospect: You too, Sarah. Thanks!
