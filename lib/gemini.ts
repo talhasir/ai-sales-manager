@@ -10,8 +10,8 @@ export async function analyzeCallTranscript(transcript: string) {
       throw new Error("GEMINI_API_KEY is not configured. Please add it to your .env.local file.");
     }
 
-    // Use gemini-2.0-flash-lite - lightweight and fast model
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
+    // Use gemini-1.5-flash - stable and reliable model
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `You are an expert Sales Manager. Analyze this sales call transcript and provide your assessment.
 
